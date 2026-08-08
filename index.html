@@ -8391,20 +8391,11 @@
         </div>
         <div class="cp-section">
             <h4>Appearance</h4>
-            <p class="cp-hint">Theme mode <span class="experimental-tag">Light experimental</span></p>
             <!-- Chrome-style mode toggle -->
-            <div class="theme-mode-toggle" id="theme-mode-toggle">
-                <button class="theme-mode-btn" id="tmbtn-light" data-mode="light" type="button">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-                    Light
-                </button>
+            <div class="theme-mode-toggle" id="theme-mode-toggle" style="display:none;">
                 <button class="theme-mode-btn" id="tmbtn-dark" data-mode="dark" type="button">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                     Dark
-                </button>
-                <button class="theme-mode-btn" id="tmbtn-device" data-mode="auto" type="button">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-                    Device
                 </button>
             </div>
             <p class="cp-hint" style="margin-bottom:10px;">Color</p>
@@ -10356,8 +10347,8 @@
         function applyTheme() {
             let theme = ProfileManager.getItem('theme') || 'dark';
 
-            // Migrate: if someone had theme='catppuccin' stored, convert to dark + catppuccin swatch
-            if (theme === 'catppuccin') {
+            // Migrate: convert light or legacy themes to dark mode
+            if (theme === 'catppuccin' || theme === 'light') {
                 theme = 'dark';
                 ProfileManager.setItem('theme', 'dark');
                 const stored = migrateSwatchId(ProfileManager.getItem('accent_color') || '');
@@ -10368,11 +10359,6 @@
             syncModeToggleBtns(theme);
 
             document.body.classList.remove('light-mode', 'catppuccin-mode');
-            if (theme === 'light') {
-                document.body.classList.add('light-mode');
-            } else if (theme === 'auto' && getSystemThemeMode() === 'light') {
-                document.body.classList.add('light-mode');
-            }
 
             syncThemeAccent();
             buildColorSwatches();
