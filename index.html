@@ -228,8 +228,7 @@
 
         body.catppuccin-mode {
             background-color: #24273a;
-            background-image: linear-gradient(165deg, #1e2030 0%, #24273a 45%, #181926 100%);
-            background-attachment: fixed;
+            background-image: none;
         }
 
         body.catppuccin-mode.has-bg {
@@ -10160,19 +10159,11 @@
             root.style.setProperty('--accent-contrast', accentContrastVal);
             root.style.setProperty('--theme-color', bgVal);
 
-            // Compute ambient background gradient for ALL swatches when no custom image wallpaper is active
+            // Apply solid background color for all swatches when no custom image wallpaper is active
             const hasWallpaper = document.body.classList.contains('has-bg');
             if (!hasWallpaper) {
-                if (sw.special === 'catppuccin') {
-                    document.body.style.backgroundImage = isLight
-                        ? 'linear-gradient(165deg, #e0e3ef 0%, #eff1f5 45%, #d8dce8 100%)'
-                        : 'linear-gradient(165deg, #1e2030 0%, #24273a 45%, #181926 100%)';
-                } else {
-                    document.body.style.backgroundImage = isLight
-                        ? `linear-gradient(165deg, color-mix(in srgb, ${accentVal} 12%, ${bgVal}) 0%, ${bgVal} 45%, color-mix(in srgb, black 8%, ${bgVal}) 100%)`
-                        : `linear-gradient(165deg, color-mix(in srgb, ${accentVal} 12%, ${bgVal}) 0%, ${bgVal} 45%, color-mix(in srgb, black 25%, ${bgVal}) 100%)`;
-                }
-                document.body.style.backgroundAttachment = 'fixed';
+                document.body.style.backgroundImage = 'none';
+                document.body.style.backgroundAttachment = '';
             }
 
             // Set elevated surface and component CSS variables so the whole page transforms for all swatches
