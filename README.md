@@ -32,7 +32,7 @@ I also added a glassmorphism theme option inspired by the visual style I like on
 - **Shortcuts & web apps**: Customizable speed dial links with icon picker
 - **Themes & wallpapers**: Light, Dark, Catppuccin, preset wallpapers, or custom image uploads
 - **Glassmorphism UI**: Optional backdrop blur effects inspired by macOS
-- **AI shortcuts**: Quick access to ChatGPT, Gemini, Claude, Perplexity, DeepSeek, and Copilot
+- **AI shortcuts**: Quick access to ChatGPT, Gemini and Claude etc. 
 - **Image search**: Lens-style image search supporting URLs, drag-and-drop, and clipboard paste
 - **Profiles**: Separate settings, history, and shortcuts for different profiles
 - **Offline support**: Works offline as a Progressive Web App
@@ -44,7 +44,7 @@ I also added a glassmorphism theme option inspired by the visual style I like on
 
 The optional **[ThinkPage-Bridge-Extension](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension)** handles new-tab focus and lets ThinkPage use Firefox's native browsing history for search suggestions.
 
-It can also set ThinkPage as the default new-tab page in Firefox and other Gecko-based browsers.
+It can also set ThinkPage as the default new tab page in Firefox and other Gecko based browsers.
 
 ---
 
