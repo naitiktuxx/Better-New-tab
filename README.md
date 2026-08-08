@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live_Demo-thinkpage.vercel.app-blue.svg)](https://thinkpage.vercel.app)
-[![Firefox Bridge Extension](https://img.shields.io/badge/Firefox_Extension-ThinkPage_Bridge-orange.svg)](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension)
+[![Firefox Bridge Extension](https://img.shields.io/badge/Firefox_Extension-ThinkPage_Bridge-orange.svg)](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension/releases)
 
 A customizable, offline-first new tab dashboard for your browser.
 
@@ -30,7 +30,7 @@ I also added a glassmorphism theme option inspired by the visual style I like on
 
 - **Search engine options**: Google, Bing, DuckDuckGo, and custom search engines
 - **Shortcuts & web apps**: Customizable speed dial links with icon picker
-- **Themes & wallpapers**: Light, Dark, Catppuccin, preset wallpapers, or custom image uploads
+- **Themes & wallpapers**: Dark, Catppuccin, and color themes, preset wallpapers, or custom image uploads
 - **Glassmorphism UI**: Optional backdrop blur effects inspired by macOS
 - **AI shortcuts**: Quick access to ChatGPT, Gemini and Claude etc. 
 - **Image search**: Lens-style image search supporting URLs, drag-and-drop, and clipboard paste
@@ -40,11 +40,31 @@ I also added a glassmorphism theme option inspired by the visual style I like on
 
 ---
 
-## Firefox Extension
+## Firefox Extension — ThinkPage Bridge ⭐ Recommended
 
-The optional **[ThinkPage-Bridge-Extension](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension)** handles new-tab focus and lets ThinkPage use Firefox's native browsing history for search suggestions.
+The best way to use ThinkPage in Firefox is with the **[ThinkPage Bridge](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension)** companion extension. It unlocks features that aren't possible from a plain web page:
 
-It can also set ThinkPage as the default new tab page in Firefox and other Gecko based browsers.
+- **Sets ThinkPage as your new tab page** in Firefox (and other Gecko-based browsers) natively
+- **Auto-focuses the search bar** the instant a new tab opens — no clicking required
+- **Syncs Firefox browsing history** into ThinkPage for real-time search suggestions
+- **Instant toggle** — pause the extension from its popup to revert to Firefox's native new tab (`about:home`) at any time
+
+### Install ThinkPage Bridge
+
+#### Method 1 — Direct `.xpi` Install (Easiest)
+
+1. Go to the **[Releases page](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension/releases)** and download the latest `thinkpage-bridge-vX.X.X.xpi`
+2. Open Firefox → `about:addons` (or `Ctrl+Shift+A` / `Cmd+Shift+A`)
+3. Click the **⚙️ gear icon** → **Install Add-on From File…**
+4. Select the downloaded `.xpi` file and click **Add**
+
+#### Method 2 — Temporary (Developer Mode)
+
+1. Download and extract the `.zip` from the **[Releases page](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension/releases)**
+2. Open Firefox → `about:debugging#/runtime/this-firefox`
+3. Click **Load Temporary Add-on…** and select `manifest.json` inside the extracted folder
+
+> **Note:** After installing, open a new tab — ThinkPage Bridge will automatically redirect it to [thinkpage.vercel.app](https://thinkpage.vercel.app).
 
 ---
 
