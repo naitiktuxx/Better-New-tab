@@ -16399,6 +16399,50 @@
             sugEl.classList.add('open');
         }
 
+        // ── Trending searches (live, engine-aware, cached 10 min) ────────────
+        let _trendingCache = null;
+        let _trendingCacheTime = 0;
+        const TRENDING_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+        function fetchTrending(cb) {
+            const now = Date.now();
+            if (_trendingCache && (now - _trendingCacheTime) < TRENDING_CACHE_TTL) {
+                cb(_trendingCache);
+                return;
+            }
+
+            const engine = getStoredSearchEngine();
+
+            const handleResults = results => {
+                const items = (results || [])
+                    .filter(r => r && typeof r === 'string' && r.trim())
+                    .slice(0, 8)
+                    .map(r => ({ query: r.trim(), type: 'trending' }));
+
+                if (items.length > 0) {
+                    _trendingCache = items;
+                    _trendingCacheTime = Date.now();
+                }
+                cb(items);
+            };
+
+            if (engine === 'bing' || engine === 'duckduckgo') {
+                // Bing's suggestions for an empty query returns popular/trending results
+                fetchJsonp(
+                    fn => `https://api.bing.com/osjson.aspx?query=&JsonType=callback&JsonCallback=${fn}`,
+                    d => Array.isArray(d) ? d[1] || [] : [],
+                    handleResults
+                );
+            } else {
+                // Google autocomplete with empty q returns trending searches
+                fetchJsonp(
+                    fn => `https://suggestqueries.google.com/complete/search?client=firefox&hl=en&q=&callback=${fn}`,
+                    d => Array.isArray(d) ? d[1] || [] : [],
+                    handleResults
+                );
+            }
+        }
+
         function showSug(q) {
             clearTimeout(sgt);
             if (!q.trim()) {
@@ -16406,17 +16450,20 @@
                 if (recentQueries.length > 0) {
                     renderCombinedSug(recentQueries);
                 } else {
-                    const trendingSearches = [
-                        { query: 'upsc capf ac admit card 2026', type: 'trending' },
-                        { query: 'sbi funds management ipo', type: 'trending' },
-                        { query: 'nothing ear 3a earbuds', type: 'trending' },
-                        { query: 'england women cricket test match', type: 'trending' },
-                        { query: 'minerva academy helsinki cup final', type: 'trending' },
-                        { query: 'final answer key aibe 21', type: 'trending' },
-                        { query: 'volkswagen tayron life', type: 'trending' },
-                        { query: 'big bash league chennai', type: 'trending' }
-                    ];
-                    renderCombinedSug(trendingSearches);
+                    // Show cached trending immediately while fetching live
+                    if (_trendingCache && _trendingCache.length > 0) {
+                        renderCombinedSug(_trendingCache);
+                    }
+                    fetchTrending(items => {
+                        // Only render if the search bar is still empty and focused
+                        if (!inp.value.trim()) {
+                            if (items.length > 0) {
+                                renderCombinedSug(items);
+                            } else if (!_trendingCache) {
+                                closeSugDropdown();
+                            }
+                        }
+                    });
                 }
                 return;
             }
