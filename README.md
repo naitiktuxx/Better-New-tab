@@ -106,7 +106,7 @@ To generate a clean ZIP archive of the source code for distribution:
 ```bash
 python3 create_release.py
 ```
-Or click **Download Release ZIP** in the ThinkPage settings panel (Account & System section).
+Or click **Download Source** / **Download Release Source Code (ZIP)** in the What's New release section or the ThinkPage settings panel (Self-Hosting & Release section).
 
 ---
 
