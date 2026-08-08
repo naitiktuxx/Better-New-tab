@@ -8849,8 +8849,16 @@
                 const everDetected = localStorage.getItem('extension_ever_detected');
                 if (!everDetected) {
                     localStorage.setItem('extension_ever_detected', '1');
+                    // Auto-enable browser history on first detection
+                    if (ProfileManager.getItem('browser_history_enabled') !== '1') {
+                        ProfileManager.setItem('browser_history_enabled', '1');
+                        toggle.checked = true;
+                        // Re-fetch history from extension now that it's enabled
+                        window.__extensionBrowserHistory = null;
+                        window.postMessage({ type: 'THINKPAGE_READY_FOR_HISTORY' }, '*');
+                    }
                     if (typeof showToast === 'function') {
-                        showToast('ThinkPage Bridge extension detected! Enable browser history in Customize → Search to use it.', 5000);
+                        showToast('ThinkPage Bridge extension detected! Browser history has been automatically enabled.', 5000);
                     }
                 }
             } else {
