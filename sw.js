@@ -1,4 +1,4 @@
-const APP_CACHE = 'new-tab-dashboard-app-v2';
+const APP_CACHE = 'new-tab-dashboard-app-v3';
 const RUNTIME_CACHE = 'new-tab-dashboard-runtime-v1';
 const APP_SHELL = [
   './',

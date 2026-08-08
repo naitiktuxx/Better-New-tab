@@ -7353,7 +7353,6 @@
                             <span class="wn-mini-slider"></span>
                         </label>
                     </div>
-                    <span class="wn-version" id="wn-version-label">v1.0.0</span>
                 </div>
             </div>
             <button class="wn-update-btn" id="wn-update-available-btn">
@@ -18417,20 +18416,6 @@
             const updateAvailableBtn = document.getElementById('wn-update-available-btn');
             const feedbackBtn = document.getElementById('wn-feedback-btn');
             if (!dropdown || !toggleBtn) return;
-
-            // The version badge shows the version that's actually applied on
-            // THIS device — i.e. the version as of the last update this
-            // browser accepted. It only changes when an update is actually
-            // applied (auto-update ON, or the user manually refreshes). If
-            // auto-update is OFF and an update is pending, this stays put —
-            // the live/available version is shown separately in the update
-            // banner instead, exactly like normal desktop software.
-            const versionLabelEl = document.getElementById('wn-version-label');
-            if (versionLabelEl) {
-                const installedVersion = ProfileManager.getItem('installed_version') || BUILD_VERSION_BASELINE;
-                versionLabelEl.textContent = `v${installedVersion}`;
-            }
-
             // Sync auto-update toggle state
             if (typeof window.syncAllAutoUpdateControls === 'function') {
                 window.syncAllAutoUpdateControls();
