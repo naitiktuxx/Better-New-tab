@@ -5453,6 +5453,13 @@
             background: var(--btn-bg);
         }
 
+        .pd-footer-link:disabled,
+        .pd-footer-link[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         /* ── MANAGE PROFILES MODAL STYLES ─────────────────────────── */
         .manage-profiles-list {
             display: flex;
@@ -7371,11 +7378,7 @@
             </div>
             <div class="wn-content" id="wn-content"></div>
             <div class="wn-footer" style="display: flex; gap: 8px; align-items: center; width: 100%;">
-                <button class="wn-feedback-btn download-release-zip-btn" id="wn-download-source-btn" type="button" style="flex: 1; background: var(--btn-bg); border-color: var(--panel-border); font-weight: 600;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Download Source
-                </button>
-                <button class="wn-feedback-btn" id="wn-feedback-btn" type="button" style="flex: 1;">
+                <button class="wn-feedback-btn" id="wn-feedback-btn" type="button" style="width: 100%;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     Give Feedback
                 </button>
@@ -8591,10 +8594,10 @@
             </div>
         <div class="cp-section">
             <h4>Self-Hosting & Release</h4>
-            <p class="cp-hint">Host locally with Python server or download the source code ZIP release.</p>
-            <button class="upload-btn download-release-zip-btn" id="download-release-zip-btn" type="button" style="width: 100%;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: -2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download Release Source Code (ZIP)
+            <p class="cp-hint">Host locally with Python server or view latest releases on GitHub.</p>
+            <button class="upload-btn download-release-zip-btn" id="download-release-zip-btn" type="button" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View Project Releases (GitHub)
             </button>
             <div style="margin-top: 10px; padding: 10px; background: var(--surface-3); border-radius: 8px; border: 1px solid var(--border-light); font-size: 11px; font-family: monospace; color: var(--text-muted); line-height: 1.5;">
                 <strong style="color: var(--text-main);">Run Python Server:</strong><br/>
@@ -8706,10 +8709,6 @@
             <div id="whats-new-modal-bullets" style="display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto; padding-right: 4px; margin-bottom: 18px; text-align: left;">
             </div>
             <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
-                <button class="upload-btn secondary download-release-zip-btn" id="whats-new-modal-download-btn" type="button" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; font-size: 12px; font-weight: 600; cursor: pointer;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Download Source Code
-                </button>
                 <a id="whats-new-modal-github-btn" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: var(--btn-bg); color: var(--text-primary); border: 1px solid var(--panel-border); border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; text-decoration: none; transition: background 0.15s, border-color 0.15s;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                     GitHub Commit
@@ -8865,43 +8864,76 @@
             const row = document.getElementById('browser-history-row');
             const hint = document.getElementById('browser-history-hint');
 
-            if (!toggle || !row || !hint) return;
+            if (toggle && row && hint) {
+                if (connected) {
+                    toggle.disabled = false;
+                    row.style.opacity = '1';
+                    hint.style.display = 'block';
+                    hint.style.color = '#22c55e'; // green status
+                    hint.textContent = '● Connected';
+
+                    // Sync the checkbox visual checked state with stored value
+                    const activeProfileId = localStorage.getItem('search_active_profile') || 'default';
+                    const isEnabled = localStorage.getItem(`profile_${activeProfileId}_browser_history_enabled`) === '1';
+                    toggle.checked = isEnabled;
+
+                    const everDetected = localStorage.getItem('extension_ever_detected');
+                    if (!everDetected) {
+                        localStorage.setItem('extension_ever_detected', '1');
+                        // Auto-enable browser history on first detection
+                        if (ProfileManager.getItem('browser_history_enabled') !== '1') {
+                            ProfileManager.setItem('browser_history_enabled', '1');
+                            toggle.checked = true;
+                            // Re-fetch history from extension now that it's enabled
+                            window.__extensionBrowserHistory = null;
+                            window.postMessage({ type: 'THINKPAGE_READY_FOR_HISTORY' }, '*');
+                        }
+                        if (typeof showToast === 'function') {
+                            showToast('ThinkPage Bridge extension detected! Browser history has been automatically enabled.', 5000);
+                        }
+                    }
+                } else {
+                    toggle.disabled = true;
+                    row.style.opacity = '0.5';
+                    hint.style.display = 'block';
+                    hint.style.color = 'var(--text-muted, #9aa0a6)';
+                    hint.textContent = 'Extension not detected. Install ThinkPage Bridge to enable this.';
+
+                    toggle.checked = false;
+                }
+            }
+
+            // Disable & hide import/export buttons when connected to extension (leaving no blank space)
+            const pdExportBtn = document.getElementById('pd-export-btn');
+            const pdImportBtn = document.getElementById('pd-import-btn');
+            const pdFooterRow = document.querySelector('.pd-footer-row');
+            const pdPortalBottomDivider = document.getElementById('pd-portal-divider-bottom-sec');
+            const tabBtnSync = document.getElementById('tab-btn-sync');
+            const historyTabs = document.querySelector('.history-tabs');
 
             if (connected) {
-                toggle.disabled = false;
-                row.style.opacity = '1';
-                hint.style.display = 'block';
-                hint.style.color = '#22c55e'; // green status
-                hint.textContent = '● Connected';
-
-                // Sync the checkbox visual checked state with stored value
-                const activeProfileId = localStorage.getItem('search_active_profile') || 'default';
-                const isEnabled = localStorage.getItem(`profile_${activeProfileId}_browser_history_enabled`) === '1';
-                toggle.checked = isEnabled;
-
-                const everDetected = localStorage.getItem('extension_ever_detected');
-                if (!everDetected) {
-                    localStorage.setItem('extension_ever_detected', '1');
-                    // Auto-enable browser history on first detection
-                    if (ProfileManager.getItem('browser_history_enabled') !== '1') {
-                        ProfileManager.setItem('browser_history_enabled', '1');
-                        toggle.checked = true;
-                        // Re-fetch history from extension now that it's enabled
-                        window.__extensionBrowserHistory = null;
-                        window.postMessage({ type: 'THINKPAGE_READY_FOR_HISTORY' }, '*');
-                    }
-                    if (typeof showToast === 'function') {
-                        showToast('ThinkPage Bridge extension detected! Browser history has been automatically enabled.', 5000);
-                    }
+                if (pdExportBtn) pdExportBtn.disabled = true;
+                if (pdImportBtn) pdImportBtn.disabled = true;
+                if (pdFooterRow) pdFooterRow.style.display = 'none';
+                if (pdPortalBottomDivider) pdPortalBottomDivider.style.display = 'none';
+                if (tabBtnSync) {
+                    tabBtnSync.disabled = true;
+                    tabBtnSync.style.display = 'none';
                 }
+                if (historyTabs) historyTabs.style.display = 'none';
             } else {
-                toggle.disabled = true;
-                row.style.opacity = '0.5';
-                hint.style.display = 'block';
-                hint.style.color = 'var(--text-muted, #9aa0a6)';
-                hint.textContent = 'Extension not detected. Install ThinkPage Bridge to enable this.';
+                if (pdExportBtn) pdExportBtn.disabled = false;
+                if (pdImportBtn) pdImportBtn.disabled = false;
+                if (pdFooterRow) pdFooterRow.style.display = '';
+                if (tabBtnSync) {
+                    tabBtnSync.disabled = false;
+                    tabBtnSync.style.display = '';
+                }
+                if (historyTabs) historyTabs.style.display = '';
+            }
 
-                toggle.checked = false;
+            if (typeof renderProfileDropdown === 'function') {
+                renderProfileDropdown();
             }
         }
 
@@ -14144,72 +14176,14 @@
             });
         }
 
-        // ── Release Source Code ZIP Downloader ──
+        // ── Release Source Code Redirect ──
         function initReleaseZipDownload() {
-            const handleDownload = async (btn) => {
-                if (!btn || btn.disabled) return;
-                btn.disabled = true;
-                const origText = btn.innerHTML;
-                btn.textContent = 'Building Release ZIP...';
-
-                try {
-                    const fileList = [
-                        'index.html',
-                        'sw.js',
-                        'manifest.webmanifest',
-                        'app-icon.svg',
-                        'server.py',
-                        'create_release.py',
-                        'README.md',
-                        'LICENSE'
-                    ];
-
-                    const files = [];
-
-                    for (const path of fileList) {
-                        try {
-                            const res = await fetch(path);
-                            if (res.ok) {
-                                const text = await res.text();
-                                files.push({ name: path, content: text });
-                            }
-                        } catch (e) {
-                            console.warn('Could not fetch ' + path + ' for release ZIP:', e);
-                        }
-                    }
-
-                    if (!files.some(f => f.name === 'index.html')) {
-                        files.push({ name: 'index.html', content: '<!DOCTYPE html>\n' + document.documentElement.outerHTML });
-                    }
-
-                    const zipBlob = buildUncompressedZip(files);
-                    const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-                    const filename = `ThinkPage-source-release-${timestamp}.zip`;
-
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(zipBlob);
-                    link.download = filename;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-
-                    showToast('Release ZIP downloaded: ' + filename, 3000);
-                } catch (err) {
-                    console.error('Failed to create release ZIP:', err);
-                    showToast('Failed to create Release ZIP', 3000);
-                } finally {
-                    btn.disabled = false;
-                    btn.innerHTML = origText;
-                }
-            };
-
             document.addEventListener('click', (e) => {
-                const target = e.target.closest('#download-release-zip-btn, #wn-download-source-btn, #whats-new-modal-download-btn, .download-release-zip-btn, [data-action="download-release-zip"]');
+                const target = e.target.closest('#download-release-zip-btn, .download-release-zip-btn, [data-action="download-release-zip"]');
                 if (target) {
                     e.preventDefault();
                     e.stopPropagation();
-                    handleDownload(target);
+                    window.open('https://github.com/naitiktuxx/ThinkPage/releases', '_blank', 'noopener,noreferrer');
                 }
             });
         }
@@ -16807,6 +16781,7 @@
             });
 
             exportBtn.addEventListener('click', () => {
+                if (window.__extensionConnected || exportBtn.disabled) return;
                 const backup = {
                     version: 1,
                     profiles: ProfileManager.getProfiles(),
@@ -16847,7 +16822,10 @@
                 showToast('Settings & Search History successfully exported!');
             });
 
-            importBtn.addEventListener('click', () => importFile.click());
+            importBtn.addEventListener('click', () => {
+                if (window.__extensionConnected || importBtn.disabled) return;
+                importFile.click();
+            });
 
             let tempImportData = null;
             const importSelModal = document.getElementById('import-selection-modal-overlay');
@@ -17449,6 +17427,15 @@
             const portalTitle = document.getElementById('pd-portal-title-sec');
             const portalDivider = document.getElementById('pd-portal-divider-sec');
             const portalBottomDivider = document.getElementById('pd-portal-divider-bottom-sec');
+            const pdFooterRow = document.querySelector('.pd-footer-row');
+            const pdExportBtn = document.getElementById('pd-export-btn');
+            const pdImportBtn = document.getElementById('pd-import-btn');
+
+            if (pdFooterRow) {
+                pdFooterRow.style.display = window.__extensionConnected ? 'none' : '';
+            }
+            if (pdExportBtn) pdExportBtn.disabled = !!window.__extensionConnected;
+            if (pdImportBtn) pdImportBtn.disabled = !!window.__extensionConnected;
 
             if (portalGoogle && portalMicrosoft && portalDuckDuckGo && portalTitle && portalDivider && portalBottomDivider) {
                 portalGoogle.style.display = 'none';
@@ -17458,20 +17445,22 @@
                 portalDivider.style.display = 'none';
                 portalBottomDivider.style.display = 'none';
 
+                const hasPortal = (engine === 'google' || engine === 'bing' || engine === 'duckduckgo');
                 if (engine === 'google') {
                     portalGoogle.style.display = 'flex';
                     portalTitle.style.display = 'block';
                     portalDivider.style.display = 'block';
-                    portalBottomDivider.style.display = 'block';
                 } else if (engine === 'bing') {
                     portalMicrosoft.style.display = 'flex';
                     portalTitle.style.display = 'block';
                     portalDivider.style.display = 'block';
-                    portalBottomDivider.style.display = 'block';
                 } else if (engine === 'duckduckgo') {
                     portalDuckDuckGo.style.display = 'flex';
                     portalTitle.style.display = 'block';
                     portalDivider.style.display = 'block';
+                }
+
+                if (hasPortal && !window.__extensionConnected) {
                     portalBottomDivider.style.display = 'block';
                 }
             }
@@ -17772,6 +17761,29 @@
             const historyModal = document.getElementById('history-modal-overlay');
             const historySearchInput = document.getElementById('history-search-input');
             const historySaveToggle = document.getElementById('history-save-toggle');
+            const tabBtnView = document.getElementById('tab-btn-view');
+            const tabBtnSync = document.getElementById('tab-btn-sync');
+            const historyTabs = document.querySelector('.history-tabs');
+            const paneView = document.getElementById('history-view-pane');
+            const paneSync = document.getElementById('history-sync-pane');
+
+            if (window.__extensionConnected) {
+                if (tabBtnSync) {
+                    tabBtnSync.disabled = true;
+                    tabBtnSync.style.display = 'none';
+                }
+                if (historyTabs) historyTabs.style.display = 'none';
+                if (tabBtnView) tabBtnView.classList.add('active');
+                if (tabBtnSync) tabBtnSync.classList.remove('active');
+                if (paneView) paneView.style.display = 'block';
+                if (paneSync) paneSync.style.display = 'none';
+            } else {
+                if (tabBtnSync) {
+                    tabBtnSync.disabled = false;
+                    tabBtnSync.style.display = '';
+                }
+                if (historyTabs) historyTabs.style.display = '';
+            }
 
             historySearchInput.value = '';
             historySaveToggle.checked = ProfileManager.getItem('save_history') !== '0';
