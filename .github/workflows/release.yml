@@ -62,9 +62,7 @@ jobs:
           FULL_SHA="${{ steps.meta.outputs.full_sha }}"
           SHORT_SHA="${{ steps.meta.outputs.short_sha }}"
 
-          RELEASE_NOTES="ThinkPage source code release for commit ${SHORT_SHA} (${COMMIT_TITLE}).
-
-Package ${ZIP_NAME} is attached below for local hosting and deployment."
+          RELEASE_NOTES="ThinkPage source code release for commit ${SHORT_SHA} (${COMMIT_TITLE}). Package ${ZIP_NAME} is attached below for local hosting and deployment."
 
           # Create release or upload asset if release already exists
           if gh release view "$TAG_NAME" >/dev/null 2>&1; then
