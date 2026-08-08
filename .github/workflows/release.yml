@@ -69,14 +69,10 @@ jobs:
           else
             echo "Creating new GitHub Release for $TAG_NAME..."
             gh release create "$TAG_NAME" "$ZIP_NAME" \
-              --title "ThinkPage ${TAG_NAME} - ${COMMIT_TITLE}" \
-              --notes "## 📦 ThinkPage Source Code Release (${TAG_NAME})
+              --title "ThinkPage ${TAG_NAME}" \
+              --notes "ThinkPage source code release for commit ${SHORT_SHA} (${COMMIT_TITLE}).
 
-          **Commit:** ${COMMIT_TITLE} ([\`${SHORT_SHA}\`](https://github.com/${{ github.repository }}/commit/${FULL_SHA}))
-
-          ### 📁 Release Assets
-          - **\`${ZIP_NAME}\`**: Source code package ready for local hosting and deployment.
-          - Built automatically on push to \`main\`." \
+Package ${ZIP_NAME} is attached below for local hosting and deployment." \
               --draft=false \
               --prerelease=false
           fi

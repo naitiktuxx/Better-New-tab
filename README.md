@@ -1,125 +1,63 @@
 # ThinkPage
 
-<img src="./app-icon.svg" width="96" alt="ThinkPage Logo" />
+ThinkPage is a lightweight customizable browser new tab page. It runs locally in your browser and uses local storage to keep your preferences, shortcuts, and custom settings private.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-thinkpage.vercel.app-blue.svg)](https://thinkpage.vercel.app)
-[![Firefox Bridge Extension](https://img.shields.io/badge/Firefox_Extension-ThinkPage_Bridge-orange.svg)](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension/releases)
+Live site: https://thinkpage.vercel.app
 
-A customizable, offline-first new tab dashboard for your browser.
+## Background
 
-> Live demo: [https://thinkpage.vercel.app](https://thinkpage.vercel.app)
+Firefox is open and flexible, but the simple layout of Chrome's default new tab page is convenient. ThinkPage combines that clean design with custom search engines, personalized shortcuts, and customizable themes without sending your data to external tracking services.
 
----
+## Core Features and Functionality
 
-## Screenshots
+Search engine switching
+You can switch search engines between Google, Bing, DuckDuckGo, or custom search endpoints. Typing into the search bar pulls live search suggestions directly from the selected provider into the autocomplete dropdown.
 
-<!-- Screenshots will be added here. -->
+Custom shortcuts and speed dial
+Users can add, remove, and reorder shortcuts with custom labels and icons. Shortcut categories include web applications and direct links to AI services like ChatGPT, Gemini, and Claude.
 
----
+Themes and visual customization
+ThinkPage includes light mode, dark mode, Catppuccin themes, and custom color accents. Background options support solid colors, curated wallpapers, or custom image uploads with optional glassmorphism blur effects.
 
-## Why I made it
+Image search
+The search bar supports visual image queries. You can upload an image file, paste an image from your clipboard, or provide an image URL to query Google Lens.
 
-I like Firefox because it's open source and customizable, but I preferred the clean look of Chrome's default homepage. I wanted to make something similar while letting users choose their own search engines—like Google, Bing, DuckDuckGo, or custom providers—and customize the page layout.
+Profiles and data management
+You can create multiple profiles to isolate settings for work and personal use. All configuration settings stay in browser local storage and can be backed up or transferred using JSON export and import.
 
-I also added a glassmorphism theme option inspired by the visual style I like on macOS.
+Offline support and self hosting
+The web app uses a Progressive Web App service worker to function offline. You can also host ThinkPage on your own machine using the included Python server script.
 
----
+## Firefox Extension Integration
 
-## Features
+The optional ThinkPage Bridge extension connects ThinkPage directly with Firefox to replace the browser default new tab page.
 
-- **Search engine options**: Google, Bing, DuckDuckGo, and custom search engines
-- **Shortcuts & web apps**: Customizable speed dial links with icon picker
-- **Themes & wallpapers**: Dark, Catppuccin, and color themes, preset wallpapers, or custom image uploads
-- **Glassmorphism UI**: Optional backdrop blur effects inspired by macOS
-- **AI shortcuts**: Quick access to ChatGPT, Gemini and Claude etc. 
-- **Image search**: Lens-style image search supporting URLs, drag-and-drop, and clipboard paste
-- **Profiles**: Separate settings, history, and shortcuts for different profiles
-- **Offline support**: Works offline as a Progressive Web App
-- **Firefox integration**: Optional companion extension for history suggestions and tab handling
+When enabled, opening a new tab immediately focuses the search bar so you can start typing right away. The extension also accesses local Firefox history to display relevant search suggestions in real time.
 
----
-
-## Firefox Extension — ThinkPage Bridge ⭐ Recommended
-
-The best way to use ThinkPage in Firefox is with the **[ThinkPage Bridge](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension)** companion extension. It unlocks features that aren't possible from a plain web page:
-
-- **Sets ThinkPage as your new tab page** in Firefox (and other Gecko-based browsers) natively
-- **Auto-focuses the search bar** the instant a new tab opens — no clicking required
-- **Syncs Firefox browsing history** into ThinkPage for real-time search suggestions
-- **Instant toggle** — pause the extension from its popup to revert to Firefox's native new tab (`about:home`) at any time
-
-### Install ThinkPage Bridge
-
-#### Method 1 — Direct `.xpi` Install (Easiest)
-
-1. Go to the **[Releases page](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension/releases)** and download the latest `thinkpage-bridge-vX.X.X.xpi`
-2. Open Firefox → `about:addons` (or `Ctrl+Shift+A` / `Cmd+Shift+A`)
-3. Click the **⚙️ gear icon** → **Install Add-on From File…**
-4. Select the downloaded `.xpi` file and click **Add**
-
-#### Method 2 — Temporary (Developer Mode)
-
-1. Download and extract the `.zip` from the **[Releases page](https://github.com/naitiktuxx/ThinkPage-Bridge-Extension/releases)**
-2. Open Firefox → `about:debugging#/runtime/this-firefox`
-3. Click **Load Temporary Add-on…** and select `manifest.json` inside the extracted folder
-
-> **Note:** After installing, open a new tab — ThinkPage Bridge will automatically redirect it to [thinkpage.vercel.app](https://thinkpage.vercel.app).
-
----
+1. Download the latest `.xpi` file from the ThinkPage Bridge repository.
+2. Open `about:addons` in Firefox.
+3. Select Install Add-on From File from the settings menu and choose the `.xpi` file.
 
 ## Privacy
 
-ThinkPage does not include any analytics or tracking scripts. Preferences, shortcuts, and local settings are stored in your browser (`localStorage`).
+ThinkPage contains no tracking scripts or external telemetry. All preferences and saved shortcuts remain in your browser local storage. When you perform a search or upload a wallpaper, your browser sends requests directly to those third party services.
 
-When you use search engines, AI tools, wallpaper providers, or other external features, your browser sends requests directly to those services.
+## Running Locally and Releases
 
----
-
-## AI-assisted development
-
-I used AI tools throughout the project for coding assistance, debugging, research, brainstorming, and writing documentation.
-
----
-
-## Getting Started
-
-### Use online
-Open [thinkpage.vercel.app](https://thinkpage.vercel.app) and set it as your browser homepage or new tab page.
-
-### Install as a PWA
-In Chrome, Edge, or Brave, click the install button in the address bar (or select "Add to Home Screen" on mobile) to use ThinkPage as a standalone desktop or mobile app.
-
-### Run & Self-Host Locally
-Clone the repository and run the included Python self-hosting server:
+To run the local HTTP server:
 
 ```bash
-git clone https://github.com/naitiktuxx/ThinkPage.git
-cd ThinkPage
 python3 server.py
 ```
-Open `http://localhost:8000` in your browser.
 
-### Create & Download Release ZIP
-Every commit pushed to `main` automatically triggers a GitHub Actions workflow that builds a clean `ThinkPage-release-vX.X.X.zip` package and attaches it to the [GitHub Releases](https://github.com/naitiktuxx/ThinkPage/releases) page.
-
-To generate the clean ZIP archive locally:
+To build a clean source code ZIP archive:
 
 ```bash
 python3 create_release.py
 ```
-Or click **Download Source** / **View Project Releases (GitHub)** in the What's New release section or the ThinkPage settings panel.
 
----
-
-## Contributing
-
-Contributions and bug reports are welcome! Feel free to open an issue or submit a pull request.
-
-Connect on X: [@naitiktux](https://x.com/naitiktux)
-
----
+Commits pushed to the main repository branch automatically build and publish source code ZIP packages on GitHub Releases.
 
 ## License
 
-MIT License. See [LICENSE](./LICENSE).
+MIT License. See LICENSE for details.
