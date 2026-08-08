@@ -10228,21 +10228,22 @@
                 root.style.setProperty('--surface-2', isLight ? `color-mix(in srgb, ${accentVal} 7%, ${bgMuted})` : `color-mix(in srgb, white 10%, ${bgVal})`);
                 root.style.setProperty('--surface-3', isLight ? `color-mix(in srgb, ${accentVal} 2%, ${bgElevated})` : `color-mix(in srgb, black 20%, ${bgVal})`);
 
+                // Glass-mode variables — translucent so backdrop-filter blur shows through
                 const glassBg = isLight
-                    ? `color-mix(in srgb, ${accentVal} 8%, #f5f5f5)`
-                    : `color-mix(in srgb, ${accentVal} 12%, ${bgElevated})`;
+                    ? `color-mix(in srgb, ${accentVal} 8%, rgba(255, 255, 255, 0.68))`
+                    : `color-mix(in srgb, ${accentVal} 12%, ${hexToRgba(bgVal, 0.50)})`;
                 const glassBgHover = isLight
-                    ? `color-mix(in srgb, ${accentVal} 12%, #ebebeb)`
-                    : `color-mix(in srgb, ${accentVal} 16%, ${bgMuted})`;
+                    ? `color-mix(in srgb, ${accentVal} 12%, rgba(255, 255, 255, 0.78))`
+                    : `color-mix(in srgb, ${accentVal} 16%, ${hexToRgba(bgVal, 0.62)})`;
                 const glassBgFocus = isLight
-                    ? `color-mix(in srgb, ${accentVal} 15%, #e8e8e8)`
-                    : `color-mix(in srgb, ${accentVal} 20%, ${bgMuted})`;
+                    ? `color-mix(in srgb, ${accentVal} 15%, rgba(255, 255, 255, 0.85))`
+                    : `color-mix(in srgb, ${accentVal} 20%, ${hexToRgba(bgVal, 0.70)})`;
 
                 root.style.setProperty('--glass-bg', glassBg);
                 root.style.setProperty('--glass-bg-hover', glassBgHover);
                 root.style.setProperty('--glass-bg-focus', glassBgFocus);
                 root.style.setProperty('--glass-border', isLight ? `color-mix(in srgb, ${accentVal} 10%, rgba(0, 0, 0, 0.08))` : `color-mix(in srgb, ${accentVal} 18%, rgba(255, 255, 255, 0.12))`);
-                root.style.setProperty('--modal-bg', isLight ? `color-mix(in srgb, ${accentVal} 6%, ${bgMuted})` : `color-mix(in srgb, ${accentVal} 10%, ${bgElevated})`);
+                root.style.setProperty('--modal-bg', isLight ? `color-mix(in srgb, ${accentVal} 6%, ${bgMuted})` : `color-mix(in srgb, ${accentVal} 10%, ${hexToRgba(bgVal, 0.80)})`);
 
                 root.style.setProperty('--border-light', isLight ? `color-mix(in srgb, ${accentVal} 10%, #e8eaed)` : `color-mix(in srgb, ${accentVal} 16%, rgba(255, 255, 255, 0.1))`);
                 root.style.setProperty('--border-lighter', isLight ? `color-mix(in srgb, ${accentVal} 15%, #dadce0)` : `color-mix(in srgb, ${accentVal} 22%, rgba(255, 255, 255, 0.15))`);
