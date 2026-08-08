@@ -1,0 +1,4 @@
+# Exclude ZIP archives & OS artifacts
+*.zip
+.DS_Store
+__pycache__/

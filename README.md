@@ -70,15 +70,23 @@ Open [thinkpage.vercel.app](https://thinkpage.vercel.app) and set it as your bro
 ### Install as a PWA
 In Chrome, Edge, or Brave, click the install button in the address bar (or select "Add to Home Screen" on mobile) to use ThinkPage as a standalone desktop or mobile app.
 
-### Run locally
-Clone the repository and serve `index.html` with any static HTTP server:
+### Run & Self-Host Locally
+Clone the repository and run the included Python self-hosting server:
 
 ```bash
 git clone https://github.com/naitiktuxx/ThinkPage.git
 cd ThinkPage
-python3 -m http.server 8000
+python3 server.py
 ```
-Then open `http://localhost:8000`.
+Open `http://localhost:8000` in your browser.
+
+### Create a Release ZIP
+To generate a clean ZIP archive of the source code for distribution:
+
+```bash
+python3 create_release.py
+```
+Or click **Download Release ZIP** in the ThinkPage settings panel (Account & System section).
 
 ---
 
