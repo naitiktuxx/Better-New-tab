@@ -1,0 +1,82 @@
+name: Create Release on Commit
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package & Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Prepare Release Metadata
+        id: meta
+        run: |
+          COMMIT_TITLE=$(git log -1 --pretty=format:"%s")
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          FULL_SHA=$(git rev-parse HEAD)
+
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            TAG_NAME="${GITHUB_REF_NAME}"
+          else
+            TAG_NAME="v1.0.${GITHUB_RUN_NUMBER}"
+          fi
+
+          ZIP_NAME="ThinkPage-release-${TAG_NAME}.zip"
+
+          echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "zip_name=${ZIP_NAME}" >> $GITHUB_OUTPUT
+          echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
+          echo "short_sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "full_sha=${FULL_SHA}" >> $GITHUB_OUTPUT
+
+      - name: Create Source Code ZIP Package
+        run: |
+          python3 create_release.py -o "${{ steps.meta.outputs.zip_name }}"
+
+      - name: Publish GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="${{ steps.meta.outputs.tag_name }}"
+          ZIP_NAME="${{ steps.meta.outputs.zip_name }}"
+          COMMIT_TITLE="${{ steps.meta.outputs.commit_title }}"
+          FULL_SHA="${{ steps.meta.outputs.full_sha }}"
+          SHORT_SHA="${{ steps.meta.outputs.short_sha }}"
+
+          # Create release or upload asset if release already exists
+          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Release $TAG_NAME already exists, uploading ZIP asset..."
+            gh release upload "$TAG_NAME" "$ZIP_NAME" --clobber
+          else
+            echo "Creating new GitHub Release for $TAG_NAME..."
+            gh release create "$TAG_NAME" "$ZIP_NAME" \
+              --title "ThinkPage ${TAG_NAME} - ${COMMIT_TITLE}" \
+              --notes "## 📦 ThinkPage Source Code Release (${TAG_NAME})
+
+          **Commit:** ${COMMIT_TITLE} ([\`${SHORT_SHA}\`](https://github.com/${{ github.repository }}/commit/${FULL_SHA}))
+
+          ### 📁 Release Assets
+          - **\`${ZIP_NAME}\`**: Source code package ready for local hosting and deployment.
+          - Built automatically on push to \`main\`." \
+              --draft=false \
+              --prerelease=false
+          fi

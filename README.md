@@ -100,13 +100,15 @@ python3 server.py
 ```
 Open `http://localhost:8000` in your browser.
 
-### Create a Release ZIP
-To generate a clean ZIP archive of the source code for distribution:
+### Create & Download Release ZIP
+Every commit pushed to `main` automatically triggers a GitHub Actions workflow that builds a clean `ThinkPage-release-vX.X.X.zip` package and attaches it to the [GitHub Releases](https://github.com/naitiktuxx/ThinkPage/releases) page.
+
+To generate the clean ZIP archive locally:
 
 ```bash
 python3 create_release.py
 ```
-Or click **Download Source** / **Download Release Source Code (ZIP)** in the What's New release section or the ThinkPage settings panel (Self-Hosting & Release section).
+Or click **Download Source** / **View Project Releases (GitHub)** in the What's New release section or the ThinkPage settings panel.
 
 ---
 

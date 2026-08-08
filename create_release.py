@@ -28,6 +28,7 @@ INCLUDE_FILES = [
 # Patterns or directory names to exclude
 EXCLUDE_PATTERNS = [
     ".git",
+    ".github",
     ".DS_Store",
     "__pycache__",
     ".pytest_cache",
@@ -55,22 +56,23 @@ def create_release_zip(output_path=None):
     with zipfile.ZipFile(output_abs_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files in os.walk(root_dir):
             # Prune excluded directories
-            dirs[:] = [d for d in dirs if d not in EXCLUDE_PATTERNS]
+            dirs[:] = [d for d in dirs if d not in EXCLUDE_PATTERNS and not d.startswith('.')]
 
             for file in files:
-                if file in EXCLUDE_PATTERNS or file == output_filename or file.endswith('.zip'):
+                if file in EXCLUDE_PATTERNS or file == output_filename or file.endswith('.zip') or file.startswith('.'):
                     continue
 
                 full_path = os.path.join(root, file)
                 rel_path = os.path.relpath(full_path, root_dir)
 
-                # Check if file is in top-level include list or a sub-resource
                 top_folder = rel_path.split(os.sep)[0]
-                if top_folder in INCLUDE_FILES or rel_path in INCLUDE_FILES:
-                    zipf.write(full_path, rel_path)
-                    file_size = os.path.getsize(full_path)
-                    zipped_files.append((rel_path, file_size))
-                    print(f"  + Added: {rel_path} ({file_size:,} bytes)")
+                if top_folder in EXCLUDE_PATTERNS or top_folder.startswith('.'):
+                    continue
+
+                zipf.write(full_path, rel_path)
+                file_size = os.path.getsize(full_path)
+                zipped_files.append((rel_path, file_size))
+                print(f"  + Added: {rel_path} ({file_size:,} bytes)")
 
     total_size = os.path.getsize(output_abs_path)
 
