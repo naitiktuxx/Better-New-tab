@@ -1285,7 +1285,15 @@
         .color-swatch-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 10px 8px;
+        }
+
+        .color-swatch-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
         }
 
         .color-swatch {
@@ -1347,6 +1355,21 @@
             position: absolute;
             bottom: 0; left: 0; right: 0;
             height: 50%;
+        }
+
+        .swatch-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1;
+            white-space: nowrap;
+            pointer-events: none;
+            transition: color 0.15s;
+        }
+
+        .color-swatch-wrap:hover .swatch-label,
+        .color-swatch-wrap:has(.color-swatch.selected) .swatch-label {
+            color: var(--text-secondary);
         }
 
         .theme-label-cat {
@@ -10080,18 +10103,18 @@
         const COLOR_SWATCHES = [
             { id: 'catppuccin', label: 'Catppuccin', accent: '#b7bdf8', lightAccent: '#1e66f5', top: '#b7bdf8', bottom: '#24273a', darkBg: '#24273a', lightBg: '#eff1f5', special: 'catppuccin' },
             { id: 'blue',       label: 'Blue',       accent: '#8ab4f8', lightAccent: '#1a73e8', top: '#8ab4f8', bottom: '#1c2038', darkBg: '#1c2038', lightBg: '#eef2ff' },
-            { id: 'slate',      label: 'Slate',      accent: '#aecbfa', lightAccent: '#1558d4', top: '#aecbfa', bottom: '#1c2034', darkBg: '#1c2034', lightBg: '#f0f3ff' },
-            { id: 'sky',        label: 'Sky',        accent: '#78c8f8', lightAccent: '#0b6ea8', top: '#78c8f8', bottom: '#142030', darkBg: '#142030', lightBg: '#eef7ff' },
-            { id: 'steel',      label: 'Steel',      accent: '#9baec8', lightAccent: '#4a6785', top: '#9baec8', bottom: '#1a1e28', darkBg: '#1a1e28', lightBg: '#f4f6fa' },
+            { id: 'slate',      label: 'Navy',       accent: '#aecbfa', lightAccent: '#1558d4', top: '#aecbfa', bottom: '#1c2034', darkBg: '#1c2034', lightBg: '#f0f3ff' },
+            { id: 'sky',        label: 'Cyan',       accent: '#78c8f8', lightAccent: '#0b6ea8', top: '#78c8f8', bottom: '#142030', darkBg: '#142030', lightBg: '#eef7ff' },
+            { id: 'steel',      label: 'Grey',       accent: '#9baec8', lightAccent: '#4a6785', top: '#9baec8', bottom: '#1a1e28', darkBg: '#1a1e28', lightBg: '#f4f6fa' },
             { id: 'teal',       label: 'Teal',       accent: '#52d6b8', lightAccent: '#007a6b', top: '#52d6b8', bottom: '#122820', darkBg: '#122820', lightBg: '#eefaf7' },
             { id: 'green',      label: 'Green',      accent: '#81c995', lightAccent: '#1e7e34', top: '#81c995', bottom: '#142018', darkBg: '#142018', lightBg: '#eef8f0' },
             { id: 'lime',       label: 'Lime',       accent: '#b3e06a', lightAccent: '#558b2f', top: '#b3e06a', bottom: '#1a2212', darkBg: '#1a2212', lightBg: '#f4faed' },
-            { id: 'sage',       label: 'Sage',       accent: '#a8c5a0', lightAccent: '#4a7c59', top: '#a8c5a0', bottom: '#182018', darkBg: '#182018', lightBg: '#f2f8f0' },
-            { id: 'gold',       label: 'Gold',       accent: '#e8b84b', lightAccent: '#9d6c00', top: '#e8b84b', bottom: '#201c0c', darkBg: '#201c0c', lightBg: '#fdf8ed' },
+            { id: 'sage',       label: 'Olive',      accent: '#a8c5a0', lightAccent: '#4a7c59', top: '#a8c5a0', bottom: '#182018', darkBg: '#182018', lightBg: '#f2f8f0' },
+            { id: 'gold',       label: 'Yellow',     accent: '#e8b84b', lightAccent: '#9d6c00', top: '#e8b84b', bottom: '#201c0c', darkBg: '#201c0c', lightBg: '#fdf8ed' },
             { id: 'orange',     label: 'Orange',     accent: '#f5a623', lightAccent: '#d56e00', top: '#f5a623', bottom: '#1e1608', darkBg: '#1e1608', lightBg: '#fff7ed' },
             { id: 'brown',      label: 'Brown',      accent: '#c4975a', lightAccent: '#8b5e2a', top: '#c4975a', bottom: '#1c180c', darkBg: '#1c180c', lightBg: '#faf5ee' },
-            { id: 'rose',       label: 'Rose',       accent: '#f28b82', lightAccent: '#c0392b', top: '#f28b82', bottom: '#201416', darkBg: '#201416', lightBg: '#fff3f2' },
-            { id: 'mauve',      label: 'Mauve',      accent: '#d4a0e8', lightAccent: '#8e44ad', top: '#d4a0e8', bottom: '#1c1820', darkBg: '#1c1820', lightBg: '#faf4fd' },
+            { id: 'rose',       label: 'Red',        accent: '#f28b82', lightAccent: '#c0392b', top: '#f28b82', bottom: '#201416', darkBg: '#201416', lightBg: '#fff3f2' },
+            { id: 'mauve',      label: 'Violet',     accent: '#d4a0e8', lightAccent: '#8e44ad', top: '#d4a0e8', bottom: '#1c1820', darkBg: '#1c1820', lightBg: '#faf4fd' },
             { id: 'purple',     label: 'Purple',     accent: '#b39ddb', lightAccent: '#5c35c5', top: '#b39ddb', bottom: '#18162a', darkBg: '#18162a', lightBg: '#f6f2fc' },
             { id: 'pink',       label: 'Pink',       accent: '#f4a7c3', lightAccent: '#d63384', top: '#f4a7c3', bottom: '#201418', darkBg: '#201418', lightBg: '#fff3f7' }
         ];
@@ -10290,6 +10313,9 @@
             const isLight = document.body.classList.contains('light-mode');
 
             COLOR_SWATCHES.forEach(sw => {
+                const wrap = document.createElement('div');
+                wrap.className = 'color-swatch-wrap';
+
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'color-swatch' + (sw.id === activeId ? ' selected' : '');
@@ -10316,14 +10342,26 @@
                             <polyline points="20 6 9 17 4 12"/>
                         </svg>
                     </div>`;
+
+                const label = document.createElement('span');
+                label.className = 'swatch-label';
+                label.textContent = sw.label;
+
                 btn.addEventListener('click', () => applyAccentColor(sw.id));
-                grid.appendChild(btn);
+                wrap.appendChild(btn);
+                wrap.appendChild(label);
+                wrap.addEventListener('click', () => applyAccentColor(sw.id));
+                grid.appendChild(wrap);
             });
         }
 
         function syncSwatchSelection(activeId) {
             document.querySelectorAll('.color-swatch').forEach(el => {
                 el.classList.toggle('selected', el.dataset.swatchId === activeId);
+            });
+            document.querySelectorAll('.swatch-label').forEach(lbl => {
+                const sw = lbl.closest('.color-swatch-wrap')?.querySelector('.color-swatch');
+                if (sw) lbl.classList.toggle('active', sw.dataset.swatchId === activeId);
             });
         }
 
