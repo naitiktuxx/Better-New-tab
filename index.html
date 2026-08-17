@@ -46,8 +46,9 @@
             --accent: #8ab4f8;
             --accent-contrast: #202124;
             --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
-            --btn-bg: rgba(255, 255, 255, .1);
-            --btn-hover: rgba(255, 255, 255, .15);
+            --btn-bg: color-mix(in srgb, var(--accent) 10%, rgba(255, 255, 255, .08));
+            --btn-hover: color-mix(in srgb, var(--accent) 18%, rgba(255, 255, 255, .15));
+            --btn-active: color-mix(in srgb, var(--accent) 26%, rgba(255, 255, 255, .22));
 
             --surface-1: color-mix(in srgb, var(--accent) 4%, var(--bg-elevated));
             --surface-2: color-mix(in srgb, var(--accent) 6%, var(--bg-muted));
@@ -79,13 +80,17 @@
             --logo-fill-3: rgba(255, 255, 255, .6);
             --logo-fill-4: rgba(255, 255, 255, .7);
             --logo-fill-5: rgba(255, 255, 255, .85);
-            --sc-hover: rgba(255, 255, 255, .08);
-            --sc-menu-bg: rgba(232, 234, 237, 0.14);
-            --sc-menu-bg-hover: rgba(232, 234, 237, 0.24);
+            --sc-hover: color-mix(in srgb, var(--accent) 10%, rgba(255, 255, 255, .08));
+            --sc-menu-bg: color-mix(in srgb, var(--accent) 14%, rgba(232, 234, 237, 0.14));
+            --sc-menu-bg-hover: color-mix(in srgb, var(--accent) 26%, rgba(232, 234, 237, 0.24));
             --sc-menu-fg: rgba(232, 234, 237, 0.92);
             --modal-bg: color-mix(in srgb, var(--accent) 8%, var(--bg-muted));
             --theme-color: #202124;
             --text-primary: var(--text-main);
+            /* Logo sizing and positioning */
+            --logo-scale: 1;
+            --logo-offset-x: 0px;
+            --logo-offset-y: 0px;
             /* Button animation easing */
             --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
             --ease-out-fast: cubic-bezier(0.16, 1, 0.3, 1);
@@ -123,8 +128,9 @@
             --accent: #1a73e8;
             --accent-contrast: #ffffff;
             --accent-soft: color-mix(in srgb, var(--accent) 8%, transparent);
-            --btn-bg: rgba(60, 64, 67, .06);
-            --btn-hover: rgba(60, 64, 67, .1);
+            --btn-bg: color-mix(in srgb, var(--accent) 8%, rgba(60, 64, 67, .06));
+            --btn-hover: color-mix(in srgb, var(--accent) 16%, rgba(60, 64, 67, .12));
+            --btn-active: color-mix(in srgb, var(--accent) 24%, rgba(60, 64, 67, .18));
 
             --surface-1: color-mix(in srgb, var(--accent) 3%, var(--bg-elevated));
             --surface-2: color-mix(in srgb, var(--accent) 5%, var(--bg-muted));
@@ -156,9 +162,9 @@
             --logo-fill-3: #fbbc05;
             --logo-fill-4: #4285f4;
             --logo-fill-5: #34a853;
-            --sc-hover: rgba(60, 64, 67, .06);
-            --sc-menu-bg: rgba(60, 64, 67, 0.08);
-            --sc-menu-bg-hover: rgba(60, 64, 67, 0.14);
+            --sc-hover: color-mix(in srgb, var(--accent) 8%, rgba(60, 64, 67, .06));
+            --sc-menu-bg: color-mix(in srgb, var(--accent) 10%, rgba(60, 64, 67, 0.08));
+            --sc-menu-bg-hover: color-mix(in srgb, var(--accent) 20%, rgba(60, 64, 67, 0.16));
             --sc-menu-fg: #5f6368;
             --modal-bg: color-mix(in srgb, var(--accent) 4%, #ffffff);
             --theme-color: var(--bg-main);
@@ -188,8 +194,9 @@
             --accent: #b7bdf8;
             --accent-contrast: #24273a;
             --accent-soft: rgba(183, 189, 248, 0.14);
-            --btn-bg: rgba(183, 189, 248, 0.1);
-            --btn-hover: rgba(183, 189, 248, 0.16);
+            --btn-bg: color-mix(in srgb, var(--accent) 10%, rgba(183, 189, 248, 0.08));
+            --btn-hover: color-mix(in srgb, var(--accent) 18%, rgba(183, 189, 248, 0.16));
+            --btn-active: color-mix(in srgb, var(--accent) 26%, rgba(183, 189, 248, 0.22));
             --surface-1: #303241;
             --surface-2: #494d64;
             --surface-3: #1e2030;
@@ -217,9 +224,9 @@
             --logo-fill-3: #a5adcb;
             --logo-fill-4: #b7bdf8;
             --logo-fill-5: #c6a0f6;
-            --sc-hover: rgba(183, 189, 248, 0.1);
-            --sc-menu-bg: rgba(202, 211, 245, 0.12);
-            --sc-menu-bg-hover: rgba(202, 211, 245, 0.22);
+            --sc-hover: color-mix(in srgb, var(--accent) 10%, rgba(183, 189, 248, 0.1));
+            --sc-menu-bg: color-mix(in srgb, var(--accent) 12%, rgba(202, 211, 245, 0.12));
+            --sc-menu-bg-hover: color-mix(in srgb, var(--accent) 24%, rgba(202, 211, 245, 0.22));
             --sc-menu-fg: rgba(202, 211, 245, 0.92);
             --modal-bg: #363a4f;
             --theme-color: #24273a;
@@ -272,6 +279,19 @@
             user-select: text;
         }
 
+        button:focus-visible,
+        .icon-round-btn:focus-visible,
+        .btn-done:focus-visible,
+        .btn-cancel:focus-visible,
+        .upload-btn:focus-visible,
+        .customize-btn:focus-visible,
+        .speedtest-btn:focus-visible,
+        .ai-btn:focus-visible,
+        .icon-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
         /* TOP BAR */
         .top-bar {
             position: fixed;
@@ -301,7 +321,8 @@
         }
 
         .tb-link:hover {
-            background: var(--btn-bg);
+            background: var(--btn-hover);
+            color: var(--accent);
         }
 
         .icon-round-btn {
@@ -315,13 +336,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background .15s;
+            transition: background .15s, color .15s, transform .15s;
             flex-shrink: 0;
             position: relative;
         }
 
         .icon-round-btn:hover {
-            background: var(--btn-bg);
+            background: var(--btn-hover);
+            color: var(--accent);
+        }
+
+        .icon-round-btn.active {
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         .notification-badge {
@@ -549,8 +576,8 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-            color: #fff;
+            background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #16a34a));
+            color: var(--accent-contrast);
             border: none;
             border-radius: 10px;
             padding: 9px 14px;
@@ -558,13 +585,15 @@
             font-weight: 600;
             cursor: pointer;
             margin-bottom: 12px;
-            transition: opacity 0.15s, transform 0.15s;
+            transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
             flex-shrink: 0;
+            box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 25%, transparent);
         }
 
         .wn-update-btn:hover {
-            opacity: 0.88;
+            opacity: 0.92;
             transform: translateY(-1px);
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
         }
 
         .wn-update-btn.visible {
@@ -729,12 +758,13 @@
             font-weight: 500;
             color: var(--text-secondary);
             cursor: pointer;
-            transition: background 0.15s, color 0.15s;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
         }
 
         .wn-feedback-btn:hover {
-            background: var(--btn-bg);
-            color: var(--text-primary);
+            background: var(--btn-hover);
+            border-color: color-mix(in srgb, var(--accent) 50%, var(--panel-border));
+            color: var(--accent);
         }
 
         .apps-header {
@@ -784,8 +814,8 @@
         }
 
         .apps-edit-toggle:hover {
-            background: var(--btn-bg);
-            color: var(--text-secondary);
+            background: var(--btn-hover);
+            color: var(--accent);
         }
 
         .apps-edit-toggle.active {
@@ -920,8 +950,13 @@
         .customize-btn:hover {
             width: 114px;
             padding: 0 12px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+            border-color: color-mix(in srgb, var(--accent) 50%, var(--border-lighter));
+            box-shadow: 0 4px 18px color-mix(in srgb, var(--accent) 20%, rgba(0, 0, 0, 0.18));
             gap: 6px;
+        }
+
+        .customize-btn:hover > svg {
+            color: var(--accent);
         }
 
         .customize-btn:hover .customize-btn-text {
@@ -1078,8 +1113,8 @@
         }
 
         .cp-close:hover {
-            background: var(--btn-bg);
-            color: var(--text-secondary);
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         .cp-close svg,
@@ -1103,7 +1138,7 @@
         body.glass-mode .cp-close:hover,
         body.glass-mode .lens-fallback-close:hover {
             background: var(--glass-bg-hover);
-            color: var(--glass-text);
+            color: var(--accent);
         }
 
         .modal-header-actions {
@@ -1267,8 +1302,9 @@
         }
 
         .theme-mode-btn.active {
-            background: var(--surface-1);
-            color: var(--text-secondary);
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
             box-shadow: 0 1px 4px rgba(0,0,0,0.18);
         }
 
@@ -1277,7 +1313,9 @@
         }
 
         body.light-mode .theme-mode-btn.active {
-            background: #fff;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
             box-shadow: 0 1px 4px rgba(60,64,67,0.18);
         }
 
@@ -1315,8 +1353,8 @@
         }
 
         .color-swatch.selected {
-            border-color: var(--text-secondary);
-            box-shadow: 0 0 0 3px var(--bg-main), 0 0 0 5px var(--text-secondary);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--bg-main), 0 0 0 5px var(--accent);
         }
 
         .color-swatch .swatch-check {
@@ -1393,11 +1431,13 @@
             border-radius: 8px;
             font-size: 13px;
             cursor: pointer;
-            transition: background .2s;
+            transition: background .2s, border-color .2s, color .2s;
         }
 
         .upload-btn:hover {
             background: var(--btn-hover);
+            border-color: color-mix(in srgb, var(--accent) 45%, var(--panel-border));
+            color: var(--text-primary);
         }
 
         .upload-status {
@@ -1584,6 +1624,8 @@
 
         .app-menu-btn:hover {
             background: var(--btn-hover);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         .app-icon-box {
@@ -1631,7 +1673,9 @@
             justify-content: center;
             height: 80px;
             margin-bottom: 54px;
-            transform: translate(var(--logo-offset-x, 0px), var(--logo-offset-y, 0px));
+            transform: translate(var(--logo-offset-x, 0px), var(--logo-offset-y, 0px)) scale(var(--logo-scale, 1));
+            transform-origin: center center;
+            transition: transform 0.12s ease-out;
         }
 
         /* SEARCH */
@@ -1945,7 +1989,7 @@
             inset: 0;
             border-radius: 17px;
             padding: 1px;
-            background: linear-gradient(90deg, #D4956A, #d87093, #8ab4f8, #D4956A);
+            background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 70%, #ff8a65), color-mix(in srgb, var(--accent) 70%, #ba68c8), var(--accent), color-mix(in srgb, var(--accent) 70%, #ff8a65));
             background-size: 200% 100%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -1962,7 +2006,7 @@
             position: absolute;
             inset: 0;
             border-radius: 17px;
-            background: linear-gradient(90deg, #D4956A, #d87093, #8ab4f8, #D4956A);
+            background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 70%, #ff8a65), color-mix(in srgb, var(--accent) 70%, #ba68c8), var(--accent), color-mix(in srgb, var(--accent) 70%, #ff8a65));
             background-size: 200% 100%;
             filter: blur(8px);
             opacity: 0;
@@ -2487,12 +2531,12 @@
         .ai-btn[data-ai="perplexity"]:hover .ai-btn-icon { animation: ai-icon-pulse 0.55s ease; }
 
         .ai-btn[data-ai="google-ai"]::before {
-            background: linear-gradient(90deg, #4285f4, #8ab4f8, #aecbfa, #4285f4);
+            background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 70%, white), var(--accent));
             background-size: 200% 100%;
             animation: ai-google-flow 2s linear infinite;
         }
         .ai-btn[data-ai="google-ai"]:hover::after {
-            background: linear-gradient(90deg, #4285f4, #8ab4f8, #aecbfa, #4285f4);
+            background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 70%, white), var(--accent));
             background-size: 200% 100%;
             opacity: 0.42;
             animation: ai-google-flow 2s linear infinite;
@@ -2872,11 +2916,14 @@
         .segment-opt:has(input:checked) span {
             background: transparent !important;
             box-shadow: none !important;
-            color: var(--text-secondary);
+            color: var(--accent);
+            font-weight: 600;
         }
 
         body.light-mode .segment-opt:has(input:checked) span {
             box-shadow: none !important;
+            color: var(--accent);
+            font-weight: 600;
         }
 
         /* Collapsible Accordion sections in Customize Panel */
@@ -3214,6 +3261,11 @@
         .config-action-btn:hover {
             background: var(--btn-hover);
             border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .config-action-btn:hover svg {
+            color: var(--accent);
         }
 
         .keyboard-shortcuts-modal {
@@ -3331,11 +3383,14 @@
         .shortcut-bind-btn:hover,
         .shortcut-clear-btn:hover {
             background: var(--btn-hover);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         .shortcut-bind-btn.capturing {
             border-color: var(--accent);
             color: var(--accent);
+            background: var(--accent-soft);
         }
 
         .keyboard-shortcuts-empty {
@@ -3711,7 +3766,7 @@
         .sc-menu-btn:hover,
         .sc-menu-btn:focus-visible {
             background: var(--sc-menu-bg-hover);
-            color: var(--sc-menu-fg);
+            color: var(--accent);
         }
 
         .shortcut:focus-visible {
@@ -4100,6 +4155,12 @@
 
         .btn-done:hover {
             filter: brightness(1.08);
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+        }
+
+        .btn-done:active {
+            transform: scale(0.97);
+            filter: brightness(0.95);
         }
 
         /* History Modal Tabs & Backdrop-Filter Supports */
@@ -4126,12 +4187,12 @@
         }
 
         .history-tab:hover {
-            color: var(--text-main);
+            color: var(--accent);
         }
 
         .history-tab.active {
             border-bottom-color: var(--accent);
-            color: var(--text-main);
+            color: var(--accent);
             font-weight: 600;
         }
 
@@ -4189,8 +4250,8 @@
         }
 
         .lens-fallback-close:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         #lens-fallback-title {
@@ -4248,7 +4309,7 @@
 
         .lens-bing-btn {
             background: var(--accent);
-            color: #fff;
+            color: var(--accent-contrast);
             border: none;
             padding: 12px 24px;
             font-size: 14px;
@@ -4257,7 +4318,7 @@
             cursor: pointer;
             width: 100%;
             transition: opacity 0.2s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(var(--accent-rgb, 100, 100, 255), 0.3);
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent);
         }
 
         .lens-bing-btn:hover {
@@ -4407,7 +4468,7 @@
             height: 32px;
             border-radius: 8px;
             background: var(--accent);
-            color: #fff;
+            color: var(--accent-contrast);
             border: none;
             cursor: pointer;
             transition: opacity 0.2s, transform 0.1s;
@@ -4552,10 +4613,11 @@
         }
 
         .lens-segment-tab.active {
-            background: var(--surface-1);
+            background: var(--accent-soft);
             color: var(--accent);
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
         }
 
         .lens-footer {
@@ -5023,7 +5085,7 @@
             }
 
             .toast-btn {
-                color: #1a73e8;
+                color: var(--accent);
                 line-height: 1.3;
             }
 
@@ -5315,8 +5377,8 @@
         }
 
         .pd-edit-btn:hover {
-            background: var(--btn-bg);
-            color: var(--text-secondary);
+            background: var(--btn-hover);
+            color: var(--accent);
         }
 
         .pd-divider {
@@ -5361,7 +5423,7 @@
         }
 
         .pd-switch-item:hover {
-            background: var(--btn-bg);
+            background: var(--btn-hover);
         }
 
         .pd-switch-item.active {
@@ -5415,18 +5477,24 @@
             border-radius: 8px;
             cursor: pointer;
             color: var(--text-secondary);
-            transition: background 0.15s;
+            transition: background 0.15s, color 0.15s;
             font-size: 13.5px;
             font-weight: 500;
         }
 
         .pd-action-row:hover {
-            background: var(--btn-bg);
+            background: var(--btn-hover);
+            color: var(--accent);
         }
 
         .pd-action-row svg {
             color: var(--text-muted);
             flex-shrink: 0;
+            transition: color 0.15s;
+        }
+
+        .pd-action-row:hover svg {
+            color: var(--accent);
         }
 
         .pd-footer-row {
@@ -5449,8 +5517,8 @@
         }
 
         .pd-footer-link:hover {
-            color: var(--text-secondary);
-            background: var(--btn-bg);
+            color: var(--accent);
+            background: var(--btn-hover);
         }
 
         .pd-footer-link:disabled,
@@ -5544,7 +5612,7 @@
 
         .mp-btn:hover {
             background: var(--btn-hover);
-            color: var(--text-secondary);
+            color: var(--accent);
         }
 
         .mp-btn.delete:hover {
@@ -5721,7 +5789,7 @@
         /* Image search paste button & inside-modal queued images styles */
         .lens-paste-btn {
             background: var(--accent);
-            color: #fff;
+            color: var(--accent-contrast);
             border: none;
             padding: 12px 24px;
             font-size: 14px;
@@ -5730,7 +5798,7 @@
             cursor: pointer;
             width: 100%;
             transition: opacity 0.2s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(var(--accent-rgb, 100, 100, 255), 0.3);
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -5986,7 +6054,8 @@
         body:not(.glass-mode):not(.light-mode) .google-ai-side-tab:hover,
         body:not(.glass-mode):not(.light-mode) .shortcuts-expand-btn:hover {
             background: var(--search-hover);
-            border-color: var(--border-lighter);
+            border-color: color-mix(in srgb, var(--accent) 50%, var(--border-lighter));
+            color: var(--accent);
             box-shadow: var(--shadow-search-focus);
         }
 
@@ -6007,7 +6076,8 @@
         body.light-mode:not(.glass-mode) .google-ai-side-tab:hover,
         body.light-mode:not(.glass-mode) .shortcuts-expand-btn:hover {
             background: var(--search-hover, #f1f3f4);
-            border-color: var(--border-lighter, #bdc1c6);
+            border-color: color-mix(in srgb, var(--accent) 50%, var(--border-lighter, #bdc1c6));
+            color: var(--accent);
             box-shadow: 0 2px 12px rgba(60, 64, 67, 0.2), 0 1px 4px rgba(60, 64, 67, 0.12);
         }
 
@@ -6329,10 +6399,13 @@
             border: 1px solid var(--border-light);
             color: var(--text-secondary);
             box-shadow: none;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .st-btn-action.secondary:hover {
             background: var(--btn-hover);
+            border-color: var(--accent);
+            color: var(--accent);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -6792,7 +6865,7 @@
             width: 18px;
             height: 18px;
             flex-shrink: 0;
-            color: #8ab4f8;
+            color: var(--accent);
         }
 
         .google-ai-drawer {
@@ -6951,7 +7024,7 @@
 
         .google-ai-drawer-icon-btn:hover {
             background: var(--btn-hover);
-            color: var(--text-secondary);
+            color: var(--accent);
         }
 
         body.glass-mode .google-ai-drawer-icon-btn {
@@ -7017,7 +7090,8 @@
 
         .mini-browser-go:hover {
             background: var(--btn-hover);
-            border-color: var(--border-lighter);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         body.glass-mode .mini-browser-nav {
@@ -7134,7 +7208,8 @@
 
         .google-ai-fallback-btn:hover {
             background: var(--btn-hover);
-            border-color: var(--border-lighter);
+            border-color: var(--accent);
+            color: var(--accent);
             transform: translateY(-1px);
         }
 
@@ -7142,6 +7217,11 @@
             background: var(--accent);
             border-color: var(--accent);
             color: var(--accent-contrast);
+        }
+
+        .google-ai-fallback-btn.primary:hover {
+            filter: brightness(1.08);
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent);
         }
 
         body.glass-mode .google-ai-frame-fallback {
@@ -7371,7 +7451,7 @@
                 </div>
                 <div id="wn-progress-logs" style="font-size: 10px; color: var(--text-muted); font-family: monospace; max-height: 60px; overflow-y: auto; line-height: 1.4; margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--panel-border); text-align: left;">
                 </div>
-                <button id="wn-update-restart-btn" style="display: none; width: 100%; align-items: center; justify-content: center; gap: 6px; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border: none; border-radius: 8px; padding: 8px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 4px;">
+                <button id="wn-update-restart-btn" style="display: none; width: 100%; align-items: center; justify-content: center; gap: 6px; background: var(--accent); color: var(--accent-contrast); border: none; border-radius: 8px; padding: 8px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 4px;">
                     Restart now to apply
                 </button>
             </div>
@@ -8142,11 +8222,25 @@
             </div>
             <details class="cp-details" id="logo-position-details" style="margin-top: 12px;">
                 <summary>
-                    <span>Logo position</span>
+                    <span>Logo size & position</span>
                     <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </summary>
                 <div class="cp-details-content" style="padding-top: 8px;">
                     <div class="config-row" style="flex-direction: column; align-items: stretch; gap: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <span class="config-label">Logo size (-100 &larr; 0 &rarr; 100)</span>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span id="logo-size-val" style="font-size: 14px; font-weight: 500; color: var(--text-secondary);">0</span>
+                                <button type="button" id="logo-size-reset" title="Reset to default (0)" style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: none; border: none; cursor: pointer; color: var(--text-muted); border-radius: 6px; padding: 0; opacity: 0.7; transition: opacity 0.15s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.7'">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <input type="range" id="logo-size-range" min="-100" max="100" step="1" value="0" class="cp-range-input" style="flex: 1; outline: none;" />
+                        </div>
+                    </div>
+                    <div class="config-row" style="margin-top: 12px; flex-direction: column; align-items: stretch; gap: 6px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <span class="config-label">Horizontal shift</span>
                             <div style="display: flex; align-items: center; gap: 8px;">
@@ -10310,11 +10404,44 @@
                 root.style.setProperty('--border-light', isLight ? `color-mix(in srgb, ${accentVal} 10%, #e8eaed)` : `color-mix(in srgb, ${accentVal} 16%, rgba(255, 255, 255, 0.1))`);
                 root.style.setProperty('--border-lighter', isLight ? `color-mix(in srgb, ${accentVal} 15%, #dadce0)` : `color-mix(in srgb, ${accentVal} 22%, rgba(255, 255, 255, 0.15))`);
             }
+
+            // Button variables adapting to active color swatch
+            const btnBg = isLight
+                ? `color-mix(in srgb, ${accentVal} 8%, rgba(60, 64, 67, 0.06))`
+                : (sw.special === 'catppuccin'
+                    ? `color-mix(in srgb, ${accentVal} 10%, rgba(183, 189, 248, 0.08))`
+                    : `color-mix(in srgb, ${accentVal} 10%, rgba(255, 255, 255, 0.08))`);
+            const btnHover = isLight
+                ? `color-mix(in srgb, ${accentVal} 16%, rgba(60, 64, 67, 0.12))`
+                : (sw.special === 'catppuccin'
+                    ? `color-mix(in srgb, ${accentVal} 18%, rgba(183, 189, 248, 0.16))`
+                    : `color-mix(in srgb, ${accentVal} 18%, rgba(255, 255, 255, 0.15))`);
+            const btnActive = isLight
+                ? `color-mix(in srgb, ${accentVal} 24%, rgba(60, 64, 67, 0.18))`
+                : (sw.special === 'catppuccin'
+                    ? `color-mix(in srgb, ${accentVal} 26%, rgba(183, 189, 248, 0.22))`
+                    : `color-mix(in srgb, ${accentVal} 26%, rgba(255, 255, 255, 0.22))`);
+            const scMenuBg = isLight
+                ? `color-mix(in srgb, ${accentVal} 10%, rgba(60, 64, 67, 0.08))`
+                : (sw.special === 'catppuccin'
+                    ? `color-mix(in srgb, ${accentVal} 12%, rgba(202, 211, 245, 0.12))`
+                    : `color-mix(in srgb, ${accentVal} 14%, rgba(232, 234, 237, 0.14))`);
+            const scMenuBgHover = isLight
+                ? `color-mix(in srgb, ${accentVal} 20%, rgba(60, 64, 67, 0.16))`
+                : (sw.special === 'catppuccin'
+                    ? `color-mix(in srgb, ${accentVal} 24%, rgba(202, 211, 245, 0.22))`
+                    : `color-mix(in srgb, ${accentVal} 26%, rgba(232, 234, 237, 0.24))`);
+
+            root.style.setProperty('--btn-bg', btnBg);
+            root.style.setProperty('--btn-hover', btnHover);
+            root.style.setProperty('--btn-active', btnActive);
+            root.style.setProperty('--sc-menu-bg', scMenuBg);
+            root.style.setProperty('--sc-menu-bg-hover', scMenuBgHover);
         }
 
         // Legacy helpers kept for compatibility with wallpaper / resetBg code
         function clearAccentOverride() {
-            ['--accent','--accent-soft','--accent-contrast'].forEach(v =>
+            ['--accent','--accent-soft','--accent-contrast','--btn-bg','--btn-hover','--btn-active','--sc-menu-bg','--sc-menu-bg-hover'].forEach(v =>
                 document.documentElement.style.removeProperty(v));
         }
         function isCatppuccinActive() {
@@ -13178,6 +13305,45 @@
                 toggle.addEventListener('change', () => {
                     ProfileManager.setItem('show_logo', toggle.checked ? '1' : '0');
                     applyLogoVisibility(toggle.checked);
+                });
+            }
+        }
+
+        function applyLogoSize(size = parseInt(ProfileManager.getItem('logo_size') || '0', 10)) {
+            const rawSize = isNaN(size) ? 0 : size;
+            const clampedSize = Math.max(-100, Math.min(100, rawSize));
+            // Mathematical mapping: -100 -> 0.35x, 0 -> 1.0x, +100 -> 1.65x
+            const scale = Math.max(0.2, 1 + (clampedSize / 100) * 0.65);
+            document.documentElement.style.setProperty('--logo-scale', `${scale}`);
+
+            const sizeRange = document.getElementById('logo-size-range');
+            const sizeVal = document.getElementById('logo-size-val');
+            if (sizeRange && sizeVal) {
+                sizeRange.value = clampedSize;
+                sizeVal.textContent = clampedSize > 0 ? `+${clampedSize}` : `${clampedSize}`;
+            }
+        }
+
+        function initLogoSizeControl() {
+            applyLogoSize();
+
+            const sizeRange = document.getElementById('logo-size-range');
+            const sizeReset = document.getElementById('logo-size-reset');
+            if (sizeRange) {
+                sizeRange.addEventListener('input', () => {
+                    const val = parseInt(sizeRange.value, 10);
+                    ProfileManager.setItem('logo_size', val.toString());
+                    applyLogoSize(val);
+                });
+                sizeRange.addEventListener('dblclick', () => {
+                    ProfileManager.setItem('logo_size', '0');
+                    applyLogoSize(0);
+                });
+            }
+            if (sizeReset) {
+                sizeReset.addEventListener('click', () => {
+                    ProfileManager.setItem('logo_size', '0');
+                    applyLogoSize(0);
                 });
             }
         }
@@ -17337,6 +17503,9 @@
             // Logo offset synchronization
             applyLogoOffset();
 
+            // Logo size synchronization
+            applyLogoSize();
+
             // Shortcuts dock & position sync
             const shortcutsDockToggle = document.getElementById('shortcuts-dock-toggle');
             if (shortcutsDockToggle) {
@@ -19563,6 +19732,7 @@
         initFirefoxLogoControl();
         initBrowserHistoryControl();
         initLogoOffsetControl();
+        initLogoSizeControl();
         initShortcutsControl();
         initShortcutsPositionControl();
         initSystemResetControl();
